@@ -4,12 +4,16 @@
 use tauri::{AppHandle, Manager, SystemTray, SystemTrayEvent, WindowEvent};
 
 // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
+
 #[tauri::command]
 async fn set_title(app_handle: AppHandle, title: String) {
-    let result = app_handle.tray_handle().set_title(&title);
+    #[cfg(target_os = "macos")]
+    {
+        let result = app_handle.tray_handle().set_title(&title);
 
-    if let Err(err) = result {
-        eprintln!("Error setting tray title: {}", err);
+        if let Err(err) = result {
+            eprintln!("Error setting tray title: {}", err);
+        }
     }
 }
 
