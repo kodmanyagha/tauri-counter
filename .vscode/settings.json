@@ -1,0 +1,7 @@
+{
+   "prettier.tabWidth": 4,
+   "emmet.includeLanguages": {
+      "rust": "html"
+   },
+   "editor.tabSize": 4
+}
